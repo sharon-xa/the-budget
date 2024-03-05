@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.linkUnderline {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+}
+
+/* width */
+::-webkit-scrollbar { 
+    width: 10px; 
+} 
+  
+/* Track */
+::-webkit-scrollbar-track { 
+    background: transparent; 
+} 
+  
+/* Handle */
+::-webkit-scrollbar-thumb { 
+    background: #ebd91c; 
+    border-radius: 10px; 
+} 
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover { 
+    background: #cbbd18;
+}
