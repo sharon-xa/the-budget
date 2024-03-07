@@ -28,13 +28,11 @@ const Logs = () => {
         const deletableLogId: number = findLastLog(logs);
         logs[deletableLogId]["deletable"] = true;
 
-        if (logs.length === 0) {
+        if (logs.length === 0)
             content = <p className="text-center">There are no logs yet...</p>
-        }
-
-        content = (
-            <>
-                {logs.map(log => (
+        else
+            content = (
+                logs.map(log =>
                     <Log
                         key={log.ID}
                         id={`${log.ID}`}
@@ -44,9 +42,8 @@ const Logs = () => {
                         transactionType={log.transactionType}
                         deletable={log.deletable ? log.deletable : false}
                     />
-                ))}
-            </>
-        )
+                )
+            )
     }
 
     return (
