@@ -1,11 +1,11 @@
 type LogType = {
-    EntryID: number;
-    Date: string;
-    BudgetMoney: number | string;
-    Description: string;
-    TransactionType: "deposit" | "withdraw";
-    TransactionAmount: number;
-    UserID: 0
+    ID: number;
+    date: string;
+    budgetMoney: number | string;
+    description: string;
+    transactionType: "deposit" | "withdraw";
+    transactionAmount: number;
+    userID: number
     deletable?: boolean;
 }
 
