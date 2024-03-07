@@ -8,13 +8,13 @@ import { useState } from "react";
 type Props = {
     id: string;
     history: string;
-    money_amount: number | string;
+    moneyAmount: number | string;
     message: string;
-    transaction_type: "deposit" | "withdraw";
+    transactionType: "deposit" | "withdraw";
     deletable: boolean;
 }
 
-const Log = ({ id, history, money_amount, message, transaction_type, deletable }: Props) => {
+const Log = ({ id, history, moneyAmount, message, transactionType, deletable }: Props) => {
     const [open, setOpen] = useState(false);
     const queryClient = useQueryClient();
     const token = getAuthToken();
@@ -47,23 +47,19 @@ const Log = ({ id, history, money_amount, message, transaction_type, deletable }
 
     return (
         <div
-            className={`py-3 px-6 bg rounded-lg flex flex-col gap-4 ${transaction_type === "withdraw" ? "bg-red" : "bg-green"} text-[#eee]`}>
+            className={`py-3 px-6 bg rounded-lg flex flex-col gap-4 ${transactionType === "withdraw" ? "bg-red" : "bg-green"} text-[#eee]`}>
             <div className="flex justify-between items-center">
-
                 <p className="bg-black bg-opacity-20 py-1 px-2 rounded-md">{history}</p>
-
                 <div className="flex items-center text-center gap-8">
                     <p className={`text-2xl w-36 py-1 px-2 rounded-md bg-white bg-opacity-[0.28]`}>
-                        {capitalizeFirstCharacter(transaction_type)}
+                        {capitalizeFirstCharacter(transactionType)}
                     </p>
                     <p className="text-2xl min-w-[180px] px-4 py-1 rounded-md bg-white bg-opacity-[0.28]">
-                        {addSpaceBetweenHundreds(money_amount)} IQD
+                        {addSpaceBetweenHundreds(moneyAmount)} IQD
                     </p>
                     {
                         // The only user who can delete is the admin
-                        // Authentication
                         isAdmin() &&
-
                         <div>
                             {
                                 deletable ?
@@ -90,15 +86,12 @@ const Log = ({ id, history, money_amount, message, transaction_type, deletable }
                                     <></>
                             }
                         </div>
-
                     }
                 </div>
-
             </div>
             <p className="text-xl px-2">
                 {capitalizeFirstCharacter(message)}
             </p>
-
         </div >
     );
 }
