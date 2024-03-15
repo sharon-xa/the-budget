@@ -31,7 +31,7 @@ function RootLayout() {
     return (
         <Providers>
             {!token ? <></> : <Navbar />}
-            <main className="min-h-screen flex flex-col justify-center items-center gap-12 text-lg">
+            <main className="">
                 <Outlet />
             </main>
         </Providers>

@@ -7,15 +7,11 @@ export default {
   theme: {
     extend: {},
     colors: {
-      "white": "#efefef",
-      "black": "#222222",
-      "green": "#1ec889",
-      "light-green": "#1BE099",
-      "red": "#E03F1B",
-      "light-red": "#e65433",
-      "blue": "#7451E0",
-      "yellow": "#ebd91c",
-      "grey": "#d3d3d3"
+      "white": "#C0C9D1",
+      "grey": "#242C35",
+      "blue": "#002E62",
+      "light-blue": "#3C6A95",
+      "red": "#620000",
     }
   },
   plugins: [],
