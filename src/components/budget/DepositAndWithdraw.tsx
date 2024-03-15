@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Modal from "../UI/Modal";
-import Form from "./Form";
 import { isAdmin } from "../../utils/auth";
+import Modal from "../UI/Modal";
+import TransactionForm from "./TransactionForm";
 
 const DepositAndWithdraw = () => {
   const [showTransactionModal, setShowTransactionModal] = useState(false);
@@ -14,7 +14,7 @@ const DepositAndWithdraw = () => {
       {
         isAdmin() &&
         <button
-          className={"text-[#eeefff] py-3 px-6 rounded-md text-2xl font-medium bg-green hover:bg-opacity-80 w-72"}
+          className={""}
           onClick={openTransactionModal}>
           Transaction
         </button>
@@ -22,7 +22,7 @@ const DepositAndWithdraw = () => {
       {
         showTransactionModal &&
         <Modal onClose={closeModalHandler}>
-          <Form closeModalHandler={closeModalHandler} />
+          <TransactionForm closeModalHandler={closeModalHandler} />
         </Modal>
       }
     </div>

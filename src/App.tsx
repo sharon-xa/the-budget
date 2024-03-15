@@ -1,7 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import Budget from "./pages/Budget";
-import History from "./pages/History";
 import Login from "./pages/Login";
 import { action as loginAction } from "./pages/Login"
 import { action as logoutAction } from "./pages/Logout";
@@ -19,11 +18,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Budget />,
-        loader: checkAuthLoader
-      },
-      {
-        path: "history",
-        element: <History />,
         loader: checkAuthLoader
       },
       {

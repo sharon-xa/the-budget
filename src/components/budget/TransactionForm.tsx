@@ -16,7 +16,7 @@ type Props = {
     closeModalHandler: () => void;
 }
 
-const Form = ({ closeModalHandler }: Props) => {
+const TransactionForm = ({ closeModalHandler }: Props) => {
     const [formData, setFormData] = useState<MyFormData>(defaultFormData);
     const [open, setOpen] = useState(false);
     const queryClient = useQueryClient();
@@ -51,7 +51,7 @@ const Form = ({ closeModalHandler }: Props) => {
     }
 
     // Should this function be async? why?
-    const handleSubmit = function (): boolean {
+    const handleSubmit = function(): boolean {
         if (formData.money_amount === "") alert(`Enter The Amount of Money You Want To ${formData.transaction_type}`)
         else if (formData.money_amount === "0" || formData.money_amount === 0) alert(`You can't ${formData.transaction_type} 0 money`)
         else if (formData.message === "") alert("You must Enter a message");
@@ -145,4 +145,4 @@ const Form = ({ closeModalHandler }: Props) => {
     )
 }
 
-export default Form;
+export default TransactionForm;
