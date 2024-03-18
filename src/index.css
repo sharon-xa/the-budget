@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.background {
+    background-image: url("/public/futuristic-skyscrapers.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    z-index: -1;
+    filter: brightness(50%);
+}
+
 .linkUnderline {
     text-decoration: underline;
     text-decoration-thickness: 3px;
@@ -9,22 +18,22 @@
 }
 
 /* width */
-::-webkit-scrollbar { 
-    width: 10px; 
-} 
-  
+::-webkit-scrollbar {
+    width: 10px;
+}
+
 /* Track */
-::-webkit-scrollbar-track { 
-    background: transparent; 
-} 
-  
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 /* Handle */
-::-webkit-scrollbar-thumb { 
-    background: #ebd91c; 
-    border-radius: 10px; 
-} 
-  
+::-webkit-scrollbar-thumb {
+    background: #ebd91c;
+    border-radius: 10px;
+}
+
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover { 
+::-webkit-scrollbar-thumb:hover {
     background: #cbbd18;
 }

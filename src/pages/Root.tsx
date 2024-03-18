@@ -30,8 +30,9 @@ function RootLayout() {
 
     return (
         <Providers>
+            <div className="h-screen w-screen fixed background"></div>
             {!token ? <></> : <Navbar />}
-            <main className="">
+            <main className="flex justify-center items-center">
                 <Outlet />
             </main>
         </Providers>
