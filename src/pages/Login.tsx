@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Form, json, redirect, useActionData, useNavigation } from "react-router-dom";
 
+const inputStyles = "w-[100%] bg-[transparent] border-2 border-light-blue focus:outline-none text-light-blue placeholder:text-light-blue px-8 py-4";
+
 const Login = () => {
     const data = useActionData() as { errors: Error[] };
     const navigation = useNavigation();
@@ -11,26 +13,25 @@ const Login = () => {
     const isSubmitting = navigation.state === "submitting";
 
     return (
-        <div className="h-96 w-[90%] max-w-4xl bg-black bg-opacity-40 rounded-lg flex justify-center items-center shadow-xl">
-            <Form method="post" className="flex flex-col justify-center items-center p-10 gap-6 text-center">
-                <span className="font-semibold text-xl">
-                    Member Login
-                </span>
-                <div className="flex flex-col gap-2">
-                    {/* username */}
-                    <input className="w-[100%] p-1" type="text" name="username" placeholder="Username" />
+        <div className="flex flex-col justify-center items-center gap-14 h-screen w-[600px]">
+            <div className="flex flex-col justify-center items-center gap-4">
+                <h1 className="text-white font-bungee text-9xl">REFINE</h1>
+                <p className="text-light-blue font-jura text-xl text-justify">
+                    We have each other, we have a leader, and also have a "budget", in the other hand we have the spirit, the potential, the meaning of continuing the great work to "refine"  the technology in our wonderful country.
+                </p>
+            </div>
 
-                    {/* email */}
-                    <input className="w-[100%] p-1" type="text" name="email" placeholder="Email" />
+            <Form method="post" className="flex flex-col justify-center items-center gap-4 text-center font-comfortaa w-96">
+                {/* email */}
+                <input className={inputStyles} type="text" name="email" placeholder="Email" />
 
-                    {/* password */}
-                    <input className="w-[100%] p-1" type="password" name="password" placeholder="Password" />
-                </div>
+                {/* password */}
+                <input className={inputStyles} type="password" name="password" placeholder="Password" />
 
                 <button
                     disabled={isSubmitting}
                     type="submit"
-                    className="bg-green hover:bg-[#19cc8ad8] text-white bg-opacity-50 py-2 px-16 rounded-md"
+                    className="text-white bg-light-blue py-4 w-[100%] px-16 mt-4 hover:bg-opacity-90"
                 >
                     {isSubmitting ? "Loading..." : "Login"}
                 </button>
@@ -45,7 +46,6 @@ export default Login;
 export async function action({ request }: { request: Request }) {
     const data = await request.formData();
     const authData = {
-        username: data.get("username")?.toString().trim(),
         email: data.get("email")?.toString().trim(),
         password: data.get("password")?.toString().trim(),
     };
@@ -53,7 +53,7 @@ export async function action({ request }: { request: Request }) {
     const user = await axios.post("http://localhost:8080/login", JSON.stringify(authData)).then((response) => {
         const user = response.data as LoginResponseType;
         return user
-    }).catch(function (error) {
+    }).catch(function(error) {
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
@@ -74,9 +74,7 @@ export async function action({ request }: { request: Request }) {
         return null
     })
 
-    if (!user)
-        return
-
+    if (!user) return;
 
     const { token, role } = user;
     if (!token) return null
