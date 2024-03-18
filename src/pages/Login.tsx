@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Form, json, redirect, useActionData, useNavigation } from "react-router-dom";
 
-const inputStyles = "w-[100%] bg-[transparent] border-2 border-light-blue focus:outline-none text-light-blue placeholder:text-light-blue px-8 py-4";
+const inputStyles = "w-[100%] bg-[transparent] border-2 border-light-blue focus:outline-none text-light-blue placeholder:text-light-blue px-8 p-[14px]";
 
 const Login = () => {
     const data = useActionData() as { errors: Error[] };

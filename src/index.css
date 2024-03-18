@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .background {
-    background-image: url("/public/futuristic-skyscrapers.png");
+    background-image: url("/futuristic-skyscrapers.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
