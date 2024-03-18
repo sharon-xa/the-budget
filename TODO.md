@@ -12,6 +12,7 @@
       - transaction failed, try again later.
 - Add the ability for ADMIN to add a new user.
 - The logs fetching when we change the sorting type is fucked up (Use TanStack Table).
+- You shouldn't be able to access the login page while you're loged in
 
 ## DONE
 
