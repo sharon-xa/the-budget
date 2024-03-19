@@ -6,7 +6,6 @@ type LogType = {
     transactionType: "deposit" | "withdraw";
     transactionAmount: number;
     userId: number
-    deletable?: boolean;
 }
 
 type MyFormData = {

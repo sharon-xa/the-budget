@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { isAdmin } from "../../utils/auth";
 import Modal from "../UI/Modal";
 import TransactionForm from "./TransactionForm";
 
@@ -11,22 +10,17 @@ const DepositAndWithdraw = () => {
 
   return (
     <div className="flex justify-center gap-8">
-      {
-        isAdmin() &&
-        <button
-          className={""}
-          onClick={openTransactionModal}>
-          Transaction
-        </button>
-      }
-      {
-        showTransactionModal &&
+      <button className="font-comfortaa bg-blue py-2 px-3 text-white rounded" onClick={openTransactionModal}>
+        Preform Transaction
+      </button>
+      {showTransactionModal && (
         <Modal onClose={closeModalHandler}>
           <TransactionForm closeModalHandler={closeModalHandler} />
         </Modal>
-      }
+      )}
     </div>
   )
 }
 
 export default DepositAndWithdraw;
+
