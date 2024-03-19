@@ -14,12 +14,14 @@ export const capitalizeFirstCharacter = (str: string): string => str.slice(0, 1)
 
 // return the index of the largest entryID in the array of logs
 export function findLastLog(logs: LogType[]): number {
+    if (logs.length === 0) return 0;
+
     let max = 0;
     let logIndex: number = 0;
     logs.forEach((log, index) => {
-        if (log.EntryID > max) {
-            max = log.EntryID;
-            if (log.EntryID === max) logIndex = index;
+        if (log.id > max) {
+            max = log.id;
+            if (log.id === max) logIndex = index;
         }
     })
     return logIndex;
