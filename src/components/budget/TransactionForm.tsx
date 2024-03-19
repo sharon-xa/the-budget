@@ -44,14 +44,14 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
         }
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
         const name = e.target.name;
         const value = e.target.value;
         setFormData((prevFormData: MyFormData) => ({ ...prevFormData, [name]: value }));
     }
 
     // Should this function be async? why?
-    const handleSubmit = function(): boolean {
+    const handleSubmit = (): boolean => {
         if (formData.money_amount === "") alert(`Enter The Amount of Money You Want To ${formData.transaction_type}`)
         else if (formData.money_amount === "0" || formData.money_amount === 0) alert(`You can't ${formData.transaction_type} 0 money`)
         else if (formData.message === "") alert("You must Enter a message");
@@ -72,9 +72,9 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
     const handleClickClose = () => {
         setOpen(false);
     };
-
+    // transform: translate(-50%, -50%);
     return (
-        <div className="fixed top-56 w-[420px] bg-white bg-opacity-50 p-4 rounded-md z-50">
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[420px] bg-white bg-opacity-50 p-4 rounded-md z-50">
             <form className="flex flex-col gap-8 text-lg p-4 bg-[transparent]">
                 <div className="flex flex-col gap-3">
                     <label>Amount of Money</label>
