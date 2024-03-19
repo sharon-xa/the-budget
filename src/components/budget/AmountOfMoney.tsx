@@ -24,7 +24,7 @@ const AmountOfMoney = () => {
     )
 
     return (
-        <p className="text-black opacity-80">
+        <p className="text-white text-7xl font-comfortaa">
             {content}
         </p>
     )

@@ -26,37 +26,39 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
       sorting: sorting,
     },
     onSortingChange: setSorting,
-  })
+  });
 
   return (
     <div className="">
       <table className="">
-
         {/* Header */}
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map(header =>
-              <th key={header.id} onClick={header.column.getToggleSortingHandler()}>
-                {flexRender(header.column.columnDef.header, header.getContext())}
-                {
-                  header.column.getIsSorted() === false ? null : header.column.getIsSorted() === "asc" ? " ⬆️ " : " ⬇️ "
-                }
-              </th>
-            )}
-          </tr>
-        ))}
+        <thead>
+          {table.getHeaderGroups().map(headerGroup => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map(header =>
+                <th key={header.id} onClick={header.column.getToggleSortingHandler()}>
+                  {flexRender(header.column.columnDef.header, header.getContext())}
+                  {
+                    header.column.getIsSorted() === false ? null : header.column.getIsSorted() === "asc" ? " ⬆️ " : " ⬇️ "
+                  }
+                </th>
+              )}
+            </tr>
+          ))}
+        </thead>
 
         {/* Body */}
-        {table.getRowModel().rows.map(row =>
-          <tr key={row.id}>
-            {row.getVisibleCells().map(cell => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        )}
-
+        <tbody>
+          {table.getRowModel().rows.map(row =>
+            <tr key={row.id}>
+              {row.getVisibleCells().map(cell => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          )}
+        </tbody>
       </table>
       <div>
         <button onClick={() => table.setPageIndex(0)}>First page</button>
