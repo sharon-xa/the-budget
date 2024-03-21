@@ -32,7 +32,7 @@ const Logs = ({ isLoading, isError, logs }: { isLoading: boolean, isError: boole
     }
 
     return (
-        <section className="bg-white bg-opacity-60 p-6 border-4 rounded-md flex flex-col gap-5 min-w-[900px] max-w-[1000px] max-h-[540px] overflow-y-auto">
+        <section className="w-[1080px]">
             {content}
         </section>
     )

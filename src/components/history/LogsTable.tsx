@@ -29,18 +29,29 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
   });
 
   return (
-    <div className="">
-      <table className="">
+    <div className="w-[100%] flex flex-col gap-8">
+      <table className="border-2 text-light-blue border-light-blue w-[100%] backdrop-blur font-comfortaa min-h-[450px]">
         {/* Header */}
-        <thead>
+        <thead className="border-2 border-light-blue">
           {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
+            <tr key={headerGroup.id} className="">
               {headerGroup.headers.map(header =>
-                <th key={header.id} onClick={header.column.getToggleSortingHandler()}>
-                  {flexRender(header.column.columnDef.header, header.getContext())}
-                  {
-                    header.column.getIsSorted() === false ? null : header.column.getIsSorted() === "asc" ? " ⬆️ " : " ⬇️ "
-                  }
+                <th key={header.id}
+                  className={`border-2 border-light-blue py-2 px-3 
+                  ${header.id === "date" ? "w-[200px]" : ""} 
+                  ${header.id === "transactionType" ? "w-[120px]" : ""}
+                  ${header.id === "transactionAmount" ? "w-[130px]" : ""}
+            `}
+                  onClick={header.id !== "description" ? header.column.getToggleSortingHandler() : () => { }}>
+                  <div className={`flex ${header.id === "description" ? "justify-center" : "justify-between"} items-center`}>
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                    {
+                      header.id !== "description" ? <div className="flex flex-col justify-center items-center">
+                        <img src={`/polygon-up${header.column.getIsSorted() === "asc" ? "-focus" : ""}.svg`} />
+                        <img src={`/polygon-down${header.column.getIsSorted() === "desc" ? "-focus" : ""}.svg`} />
+                      </div> : ""
+                    }
+                  </div>
                 </th>
               )}
             </tr>
@@ -52,7 +63,7 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
           {table.getRowModel().rows.map(row =>
             <tr key={row.id}>
               {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
+                <td key={cell.id} className={`px-4 py-2 text-center`}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
@@ -60,8 +71,8 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
           )}
         </tbody>
       </table>
-      <div>
-        <button onClick={() => table.setPageIndex(0)}>First page</button>
+      <div className="flex gap-5 justify-center items-center text-white">
+        <button onClick={() => table.setPageIndex(0)} className="bg-grey py-2 px-4 rounded-sm">First page</button>
         <button disabled={!table.getCanPreviousPage()} onClick={() => table.previousPage()}>Previous page</button>
         <button disabled={!table.getCanNextPage()} onClick={() => table.nextPage()}>Next page</button>
         <button onClick={() => table.setPageIndex(table.getPageCount() - 1)}>Last page</button>
