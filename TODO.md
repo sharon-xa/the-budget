@@ -14,11 +14,12 @@
 - The logs fetching when we change the sorting type is fucked up (Use TanStack Table).
 - You shouldn't be able to access the login page while you're loged in
 - Maybe read full description (transaction description) on hover or on a click
+- Create you own dialog without using third party
 
 ### styles
-- Transaction form
+- Transaction form (DONE)
 - Confirmation dialog
-- Table pagination buttons 
+- Table pagination buttons
 - Making sure that the designer is okay with how everything looks
 
 ## DONE
