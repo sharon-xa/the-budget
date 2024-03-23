@@ -41,6 +41,7 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
                   ${header.id === "date" ? "w-[200px]" : ""} 
                   ${header.id === "transactionType" ? "w-[120px]" : ""}
                   ${header.id === "transactionAmount" ? "w-[130px]" : ""}
+                  ${header.id !== "description" ? "cursor-pointer" : ""}
             `}
                   onClick={header.id !== "description" ? header.column.getToggleSortingHandler() : () => { }}>
                   <div className={`flex ${header.id === "description" ? "justify-center" : "justify-between"} items-center`}>
