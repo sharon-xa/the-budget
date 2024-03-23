@@ -10,7 +10,7 @@ const DepositAndWithdraw = () => {
 
   return (
     <div className="flex justify-center gap-8">
-      <button className="font-comfortaa bg-blue py-2 px-3 text-white rounded" onClick={openTransactionModal}>
+      <button className="btn font-comfortaa bg-blue text-white" onClick={openTransactionModal}>
         Preform Transaction
       </button>
       {showTransactionModal && (

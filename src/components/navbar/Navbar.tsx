@@ -8,7 +8,7 @@ const Navbar = () => {
                     <h1 className="font-bungee text-5xl cursor-pointer">Refine</h1>
                 </a>
                 <Form action="/logout" method="post">
-                    <button className="bg-grey font-comfortaa py-4 px-10"> Logout </button>
+                    <button className="btn bg-grey font-comfortaa !py-4 !px-8"> Logout </button>
                 </Form>
             </div>
         </header>

@@ -35,7 +35,7 @@ const DeleteLastRecord = ({ id, disabled }: { id: number | undefined, disabled: 
 
   return (
     <>
-      <button disabled={isPending || disabled} type="button" className="bg-red rounded text-white py-2 px-3" onClick={() => handleClickOpen()}>
+      <button disabled={isPending || disabled} type="button" className="btn bg-red font-comfortaa text-white" onClick={() => handleClickOpen()}>
         Delete Last Record
       </button>
       <GeneralDialog

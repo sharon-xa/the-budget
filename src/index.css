@@ -17,6 +17,21 @@
     text-underline-offset: 10px;
 }
 
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    max-width: max-content;
+}
+
+.btn:hover {
+    filter: brightness(120%);
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: grey;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
