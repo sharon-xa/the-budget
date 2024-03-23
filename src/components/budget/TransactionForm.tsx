@@ -10,8 +10,6 @@ const defaultFormData: MyFormData = {
     transaction_type: "deposit",
 }
 
-const btnStyles = `max-w-max px-4 py-2 rounded-md disabled:bg-grey`;
-
 type Props = {
     closeModalHandler: () => void;
 }
@@ -72,11 +70,10 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
     const handleClickClose = () => {
         setOpen(false);
     };
-    // transform: translate(-50%, -50%);
     return (
-        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[420px] bg-white bg-opacity-50 p-4 rounded-md z-50">
-            <form className="flex flex-col gap-8 text-lg p-4 bg-[transparent]">
-                <div className="flex flex-col gap-3">
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[420px] bg-[#fff] bg-opacity-35 p-4 z-50 border-white border-2 font-comfortaa font-medium text-[#fff]">
+            <form className="flex flex-col gap-8 text-lg py-4 px-2 bg-[transparent]">
+                <div className="flex flex-col gap-2">
                     <label>Amount of Money</label>
                     <input
                         type="number"
@@ -87,30 +84,30 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
                         onChange={handleChange}
                         name="money_amount"
                         step={250}
-                        className="border-[3px] border-[transparent] outline-none focus:border-light-green rounded-md px-2 py-1" />
+                        className="border-[3px] border-[transparent] outline-none focus:border-light-green rounded px-2 py-1 bg-light-grey" />
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2">
                     <label>Type of Transaction</label>
                     <select
                         name="transaction_type"
                         id="transaction"
-                        className="bg-[#fff] border-[3px] border-[transparent] outline-none focus:border-light-green rounded-md px-2 py-1"
+                        className="border-[3px] border-[transparent] outline-none focus:border-light-green rounded px-2 py-1 bg-light-grey"
                         required
                         onChange={handleChange}>
-                        <option value="deposit" className="bg-[#fff]">deposit</option>
-                        <option value="withdraw" className="bg-[#fff]">withdraw</option>
+                        <option value="deposit" className="">deposit</option>
+                        <option value="withdraw" className="">withdraw</option>
                     </select>
                 </div>
 
-                <div className="flex flex-col gap-3" aria-required>
+                <div className="flex flex-col gap-2" aria-required>
                     <label>Description</label>
                     <textarea
                         placeholder="Describe The Transaction Here..."
                         value={formData.message}
                         onChange={handleChange}
                         name="message"
-                        className="px-2 py-1 h-32 border-[3px] border-[transparent] outline-none focus:border-light-green rounded-md resize-none">
+                        className="px-2 py-1 h-40 border-[3px] border-[transparent] outline-none focus:border-light-green rounded resize-none bg-light-grey">
                     </textarea>
                 </div>
 
@@ -121,13 +118,13 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
                             handleClickOpen();
                         }}
                         disabled={isPending}
-                        className={`bg-green hover:bg-[#19cc8ad8] ${btnStyles}`}>
-                        Make Transaction
+                        className={`bg-blue btn`}>
+                        Preform Transaction
                     </button>
                     <button
                         type="button"
                         disabled={isPending}
-                        className={`bg-red hover:bg-light-red ${btnStyles}`}
+                        className={`bg-red btn`}
                         onClick={closeModalHandler}>
                         Cancel
                     </button>
