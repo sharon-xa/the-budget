@@ -1,9 +1,9 @@
 # TODO
-
+### features
 - Error handling:
    1. The message we prompt the user with when transaction is made or anything else, should be returned from the server not hard coded by the frontend.
    2. The error page that catches errors from anywhere
-   3. prompt the user with a good UI to inform them about the response of the server like:
+   3. Prompt the user with a good UI to inform them about the response of the server like:
       - user created
       - log deleted
       - transaction made
@@ -14,6 +14,12 @@
 - The logs fetching when we change the sorting type is fucked up (Use TanStack Table).
 - You shouldn't be able to access the login page while you're loged in
 - Maybe read full description (transaction description) on hover or on a click
+
+### styles
+- Transaction form
+- Confirmation dialog
+- Table pagination buttons 
+- Making sure that the designer is okay with how everything looks
 
 ## DONE
 
