@@ -72,11 +72,15 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
           )}
         </tbody>
       </table>
-      <div className="flex gap-5 justify-center items-center text-white">
-        <button onClick={() => table.setPageIndex(0)} className="bg-grey py-2 px-4 rounded-sm">First page</button>
-        <button disabled={!table.getCanPreviousPage()} onClick={() => table.previousPage()}>Previous page</button>
-        <button disabled={!table.getCanNextPage()} onClick={() => table.nextPage()}>Next page</button>
-        <button onClick={() => table.setPageIndex(table.getPageCount() - 1)}>Last page</button>
+      <div className="flex gap-4 justify-center items-center text-white">
+        <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()} className="btn bg-blue disabled:bg-[#7a7a7a] !rounded-none">First</button>
+        <button disabled={!table.getCanPreviousPage()} onClick={() => table.previousPage()} className="bg-[#2C4867] disabled:bg-[#7A7A7A] disabled:cursor-not-allowed p-2">
+          <img src="/previous.svg" className="w-5 h-5" />
+        </button>
+        <button disabled={!table.getCanNextPage()} onClick={() => table.nextPage()} className="bg-[#2C4867] disabled:bg-[#7A7A7A] disabled:cursor-not-allowed p-2">
+          <img src="/next.svg" className="w-5 h-5" />
+        </button>
+        <button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()} className="btn bg-blue disabled:bg-[#7a7a7a] !rounded-none">Last</button>
       </div>
     </div>
   )
