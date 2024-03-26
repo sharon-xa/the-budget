@@ -20,6 +20,7 @@
 - Transaction form (DONE)
 - Confirmation dialog
 - Table pagination buttons
+- Table with 1 to 9 records don't look right
 - Making sure that the designer is okay with how everything looks
 
 ## DONE
