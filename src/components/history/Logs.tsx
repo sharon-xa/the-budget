@@ -1,7 +1,7 @@
 import LogsTable from "./LogsTable";
 import { ColumnDef } from "@tanstack/react-table";
 
-const Logs = ({ isLoading, isError, logs }: { isLoading: boolean, isError: boolean, logs: LogType[] }) => {
+const Logs = ({ isLoading, isError, logs }: { isLoading: boolean, isError: boolean, logs: LogType[] | undefined }) => {
     const columns: ColumnDef<LogType>[] = [
         {
             header: "Date",
@@ -27,7 +27,8 @@ const Logs = ({ isLoading, isError, logs }: { isLoading: boolean, isError: boole
     if (logs) {
         if (logs.length === 0)
             content = <p className="text-center">There are no logs yet...</p>
-        else if (logs.length > 0)
+
+        if (logs.length > 0)
             content = <LogsTable data={logs} columns={columns} />
     }
 

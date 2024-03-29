@@ -10,7 +10,7 @@ import { findLastLog } from "../helpers";
 const Budget = () => {
     const admin: boolean = isAdmin();
 
-    const { data: logs, isLoading, isError } = useQuery({
+    const { data: logs, isLoading, isError } = useQuery<LogType[] | undefined>({
         queryKey: ["logs"],
         queryFn: async () => {
             const { data } = await axios.get("/logs")
@@ -18,12 +18,12 @@ const Budget = () => {
         },
     });
 
-    let lastLog: LogType | null;
+    let lastLog: LogType | undefined;
 
     if (logs) {
         const lastLogId: number = findLastLog(logs);
         lastLog = logs[lastLogId];
-    } else lastLog = null;
+    } else lastLog = undefined;
 
     return (
         <div className="flex flex-col items-center justify-between gap-16">
@@ -36,7 +36,7 @@ const Budget = () => {
                     </div>
                 )}
             </div>
-            <Logs isLoading={isLoading} isError={isError} logs={logs ? logs : []} />
+            <Logs isLoading={isLoading} isError={isError} logs={logs} />
         </div>
     )
 }
