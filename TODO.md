@@ -29,7 +29,7 @@
 ## styles
 - Confirmation dialog 
 - Table with 1 to 9 records don't look right
-- Table when there are no logs 
+- Table state when there are no logs 
 - Making sure that the designer is okay with how everything looks
 
 ### DONE

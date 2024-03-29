@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { getAuthToken } from "../../utils/auth";
 import GeneralDialog from "../UI/Dialog";
 
 const defaultFormData: MyFormData = {
@@ -18,17 +17,12 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
     const [formData, setFormData] = useState<MyFormData>(defaultFormData);
     const [open, setOpen] = useState(false);
     const queryClient = useQueryClient();
-    const token = getAuthToken();
 
     const { mutate: submitTransaction, isPending } = useMutation({
         // post the transaction to the server
-        mutationFn: async () => await axios.post(`http://localhost:8080/${formData.transaction_type}`, {
+        mutationFn: async () => await axios.post(`/${formData.transaction_type}`, {
             transactionAmount: +formData.money_amount,
             description: formData.message
-        }, {
-            headers: {
-                Authorization: token
-            }
         }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["moenyAmount"] });

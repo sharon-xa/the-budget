@@ -3,22 +3,17 @@ import AmountOfMoney from "../components/budget/AmountOfMoney"
 import DeleteLastRecord from "../components/budget/DeleteLastRecord";
 import DepositAndWithdraw from "../components/budget/DepositAndWithdraw"
 import Logs from "../components/history/Logs";
-import { getAuthToken, isAdmin } from "../utils/auth";
+import { isAdmin } from "../utils/auth";
 import { useQuery } from "@tanstack/react-query";
 import { findLastLog } from "../helpers";
 
 const Budget = () => {
-    const token = getAuthToken();
     const admin: boolean = isAdmin();
 
     const { data: logs, isLoading, isError } = useQuery({
         queryKey: ["logs"],
         queryFn: async () => {
-            const { data } = await axios.get("http://localhost:8080/logs", {
-                headers: {
-                    Authorization: token
-                }
-            })
+            const { data } = await axios.get("/logs")
             return data as LogType[];
         },
     });

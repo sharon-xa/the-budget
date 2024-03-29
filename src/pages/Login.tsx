@@ -42,6 +42,7 @@ const Login = () => {
 
 export default Login;
 
+// We are a team of aspiring developers who aim to challenge the conventional software development and design methods and practices of our community to make a change and refine the current software situation in iraq.
 
 export async function action({ request }: { request: Request }) {
     const data = await request.formData();
@@ -50,8 +51,9 @@ export async function action({ request }: { request: Request }) {
         password: data.get("password")?.toString().trim(),
     };
 
-    const user = await axios.post("http://localhost:8080/login", JSON.stringify(authData)).then((response) => {
+    const user = await axios.post("/login", JSON.stringify(authData)).then((response) => {
         const user = response.data as LoginResponseType;
+        axios.defaults.headers.common["Authorization"] = user.token;
         return user
     }).catch(function(error) {
         if (error.response) {

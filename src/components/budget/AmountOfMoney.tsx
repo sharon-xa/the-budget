@@ -1,15 +1,11 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { getAuthToken } from "../../utils/auth";
 
 const AmountOfMoney = () => {
-    const token = getAuthToken();
     const { data, isLoading, isError } = useQuery({
         queryKey: ["moenyAmount"],
         queryFn: async () => {
-            const { data } = await axios.get<number>("http://localhost:8080/budget", {
-                headers: { Authorization: token }
-            })
+            const { data } = await axios.get<string>("/budget")
             return data;
         }
     })
@@ -17,9 +13,9 @@ const AmountOfMoney = () => {
     let content;
     if (isLoading) content = "Loading..."
     if (isError) content = "Error Fetching Data."
-    if (data || data === 0) content = (
+    if (data) content = (
         <>
-            {data} <span className="font-semibold"> IQD</span>
+            {data + " "} <span className="font-semibold">IQD</span>
         </>
     )
 

@@ -1,21 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { getAuthToken } from "../../utils/auth";
 import axios from "axios";
 import GeneralDialog from "../UI/Dialog";
 
 const DeleteLastRecord = ({ id, disabled }: { id: number | undefined, disabled: boolean }) => {
   const [open, setOpen] = useState(false);
   const queryClient = useQueryClient();
-  const token = getAuthToken();
 
   const { mutate: deleteLog, isPending } = useMutation({
     mutationFn: async () => {
-      return await axios.delete("http://localhost:8080/log/" + id, {
-        headers: {
-          Authorization: token
-        }
-      })
+      return await axios.delete("/log/" + id)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["logs"] });
