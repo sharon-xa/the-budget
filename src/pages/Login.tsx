@@ -17,7 +17,7 @@ const Login = () => {
             <div className="flex flex-col justify-center items-center gap-4">
                 <h1 className="text-white font-bungee text-9xl">REFINE</h1>
                 <p className="text-light-blue font-jura text-xl text-justify">
-                    We have each other, we have a leader, and also have a "budget", in the other hand we have the spirit, the potential, the meaning of continuing the great work to "refine"  the technology in our wonderful country.
+                    We are a team of aspiring developers who aim to challenge the conventional software development and design methods and practices of our community to make a change and refine the current software situation in iraq.
                 </p>
             </div>
 
@@ -42,7 +42,6 @@ const Login = () => {
 
 export default Login;
 
-// We are a team of aspiring developers who aim to challenge the conventional software development and design methods and practices of our community to make a change and refine the current software situation in iraq.
 
 export async function action({ request }: { request: Request }) {
     const data = await request.formData();
