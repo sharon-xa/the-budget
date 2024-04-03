@@ -22,21 +22,24 @@ const Logs = ({ isLoading, isError, logs }: { isLoading: boolean, isError: boole
     ];
 
     let content;
-    if (isLoading) content = (<p className="text-center">Loading...</p>);
-    if (isError) content = (<p className="text-center">Failed Fetching Logs</p>);
+    if (isLoading) content = "Loading...";
+    if (isError) content = "Failed Fetching Logs";
+
     if (logs) {
-        if (logs.length === 0)
-            content = <p className="text-center">There are no logs yet...</p>
+        if (logs.length === 0) content = "There are no logs yet..."
 
         if (logs.length > 0)
-            content = <LogsTable data={logs} columns={columns} />
+            return (
+                <section className="w-[1080px]">
+                    <LogsTable data={logs} columns={columns} />
+                </section>
+            )
     }
-
     return (
-        <section className="w-[1080px]">
-            {content}
-        </section>
-    )
+        <div className="h-80 flex justify-center items-center mb-16">
+            <p className="text-center font-comfortaa text-white text-2xl">{content}</p>
+        </div>
+    );
 }
 
 export default Logs;
