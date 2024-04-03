@@ -26,7 +26,7 @@ const Budget = () => {
     } else lastLog = undefined;
 
     return (
-        <div className="flex flex-col items-center justify-between sm:gap-8 xl:gap-16 mt-8">
+        <div className="flex flex-col items-center justify-between sm:gap-8 xl:gap-16 mt-16">
             <div className={`flex items-center ${admin ? "justify-between" : "justify-center"} gap-10 w-[100%] flex-col xl:flex-row xl:gap-48`}>
                 <AmountOfMoney />
                 {admin && (

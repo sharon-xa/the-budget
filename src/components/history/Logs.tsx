@@ -36,7 +36,7 @@ const Logs = ({ isLoading, isError, logs }: { isLoading: boolean, isError: boole
             )
     }
     return (
-        <div className="flex justify-center items-center mb-16">
+        <div className="flex justify-center items-center mb-16 h-[600px]">
             <p className="text-center font-comfortaa text-white text-2xl">{content}</p>
         </div>
     );
