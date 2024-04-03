@@ -16,8 +16,8 @@ export default {
       "white": "#C0C9D1",
       "grey": "#242C35",
       "light-grey": "#38393D",
+      "lighter-grey": "#666666",
       "blue": "#002E62",
-      // #41719D
       "light-blue": "#3C6A95",
       "red": "#620000",
     }
