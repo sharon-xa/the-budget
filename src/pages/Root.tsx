@@ -32,7 +32,7 @@ function RootLayout() {
         <Providers>
             <div className="h-screen w-screen fixed background"></div>
             {!token ? <></> : <Navbar />}
-            <main className="flex justify-center items-center h-[89%]">
+            <main className="flex justify-center items-center">
                 <Outlet />
             </main>
         </Providers>

@@ -29,8 +29,8 @@ const BasicTable = ({ data, columns }: { data: LogType[], columns: ColumnDef<Log
   });
 
   return (
-    <div className="w-[100%] flex flex-col gap-8">
-      <table className="border-2 text-light-blue border-light-blue w-[100%] backdrop-blur font-comfortaa min-h-[450px]">
+    <div className="w-[100%] flex flex-col gap-8 justify-center items-center h-[600px]">
+      <table className="border-2 text-light-blue border-light-blue w-[100%] backdrop-blur font-comfortaa">
         {/* Header */}
         <thead className="border-2 border-light-blue">
           {table.getHeaderGroups().map(headerGroup => (

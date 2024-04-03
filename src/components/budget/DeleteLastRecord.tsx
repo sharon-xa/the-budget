@@ -4,6 +4,8 @@ import axios from "axios";
 import GeneralDialog from "../UI/Dialog";
 import Modal from "../UI/Modal";
 
+const styles = "text-center flex items-center justify-center bg-[#717A83] border border-white px-2";
+
 const DeleteLastRecord = ({ id, disabled, deletableLog }: { id: number | undefined, disabled: boolean, deletableLog: LogType | undefined }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [log, setLog] = useState<LogType | undefined>(deletableLog);
@@ -43,10 +45,10 @@ const DeleteLastRecord = ({ id, disabled, deletableLog }: { id: number | undefin
             content={
               (
                 <>
-                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-4/12 h-16 px-2">{log?.date}</div>
-                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-2/12 h-16 px-2">{log?.transactionType}</div>
-                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-2/12 h-16 px-2">{log?.transactionAmount}</div>
-                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-6/12 h-16 px-2">{log?.description}</div>
+                  <div className={styles + " w-[23%]"}>{log?.date}</div>
+                  <div className={styles + " w-[13%]"}>{log?.transactionType}</div>
+                  <div className={styles + " w-[14%]"}>{log?.transactionAmount} IQD</div>
+                  <div className={styles + " w-[50%]"}>{log?.description}</div>
                 </>
               )
             }

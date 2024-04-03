@@ -18,7 +18,7 @@ const GeneralDialog = ({ title, content, closeDialog, submit, closeModal, type }
                 <h2 className="text-center font-comfortaa text-xl">
                     {title}
                 </h2>
-                <div className="flex justify-center items-center w-auto">
+                <div className="flex items-stretch w-auto">
                     {content}
                 </div>
                 <div className="flex justify-center items-center gap-4">
