@@ -1,10 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import GeneralDialog from "../UI/Dialog";
+import Modal from "../UI/Modal";
 
-const DeleteLastRecord = ({ id, disabled }: { id: number | undefined, disabled: boolean }) => {
-  const [open, setOpen] = useState(false);
+const DeleteLastRecord = ({ id, disabled, deletableLog }: { id: number | undefined, disabled: boolean, deletableLog: LogType | undefined }) => {
+  const [showDialog, setShowDialog] = useState(false);
+  const [log, setLog] = useState<LogType | undefined>(deletableLog);
+
+  const openDialog = () => setShowDialog(true);
+  const closeDialog = () => setShowDialog(false);
+
+  useEffect(() => {
+    setLog(deletableLog);
+  }, [deletableLog]);
+
   const queryClient = useQueryClient();
 
   const { mutate: deleteLog, isPending } = useMutation({
@@ -19,29 +29,36 @@ const DeleteLastRecord = ({ id, disabled }: { id: number | undefined, disabled: 
     onError: () => alert("Something went wrong")
   });
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClickClose = () => {
-    setOpen(false);
-  };
-
+  console.log(log);
   return (
     <>
-      <button disabled={isPending || disabled} type="button" className="btn bg-red font-comfortaa text-white" onClick={() => handleClickOpen()}>
+      <button disabled={isPending || disabled} type="button" className="btn bg-red font-comfortaa text-white" onClick={() => openDialog()}>
         Delete Last Record
       </button>
-      <GeneralDialog
-        title="DELETE"
-        content="Are you sure you want to delete this log?"
-        open={open}
-        closeDialog={handleClickClose}
-        submit={() => {
-          deleteLog()
-          return true
-        }}
-      />
+
+      {showDialog && (
+        <Modal onClose={closeDialog} type="dialog">
+          <GeneralDialog
+            title="Are you sure you want to delete this record?"
+            content={
+              (
+                <>
+                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-4/12 h-16 px-2">{log?.date}</div>
+                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-2/12 h-16 px-2">{log?.transactionType}</div>
+                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-2/12 h-16 px-2">{log?.transactionAmount}</div>
+                  <div className="flex justify-center items-center bg-[#717A83] border border-white w-6/12 h-16 px-2">{log?.description}</div>
+                </>
+              )
+            }
+            closeDialog={closeDialog}
+            submit={() => {
+              deleteLog()
+              return true
+            }}
+            type="dialog"
+          />
+        </Modal>
+      )}
     </>
   )
 }

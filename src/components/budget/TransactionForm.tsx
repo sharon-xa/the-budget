@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import GeneralDialog from "../UI/Dialog";
+import Modal from "../UI/Modal";
 
 const defaultFormData: MyFormData = {
     message: "",
@@ -15,9 +16,12 @@ type Props = {
 
 const TransactionForm = ({ closeModalHandler }: Props) => {
     const [formData, setFormData] = useState<MyFormData>(defaultFormData);
-    const [open, setOpen] = useState(false);
-    const queryClient = useQueryClient();
+    const [showDialog, setShowDialog] = useState(false);
 
+    const openDialog = () => setShowDialog(true);
+    const closeDialog = () => setShowDialog(false);
+
+    const queryClient = useQueryClient();
     const { mutate: submitTransaction, isPending } = useMutation({
         // post the transaction to the server
         mutationFn: async () => await axios.post(`/${formData.transaction_type}`, {
@@ -57,13 +61,6 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
         return false
     }
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClickClose = () => {
-        setOpen(false);
-    };
     return (
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[420px] bg-[#fff] bg-opacity-35 p-4 z-50 border-white border-2 font-comfortaa font-medium text-[#fff]">
             <form className="flex flex-col gap-8 text-lg py-4 px-2 bg-[transparent]">
@@ -109,7 +106,7 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
                     <button
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault();
-                            handleClickOpen();
+                            openDialog();
                         }}
                         disabled={isPending}
                         className={`bg-blue btn`}>
@@ -118,20 +115,25 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
                     <button
                         type="button"
                         disabled={isPending}
-                        className={`bg-red btn`}
+                        className={`btn bg-grey`}
                         onClick={closeModalHandler}>
                         Cancel
                     </button>
                 </div>
             </form>
-            <GeneralDialog
-                open={open}
-                title="Are you sure you want to do this?"
-                content={`You are going to ${formData.transaction_type} ${formData.money_amount} IQD.`}
-                closeDialog={handleClickClose}
-                submit={handleSubmit}
-                closeModal={closeModalHandler}
-            />
+
+            {showDialog && (
+                <Modal onClose={closeDialog} type="dialog">
+                    <GeneralDialog
+                        title="Are you sure you want to do this?"
+                        content={`You are going to ${formData.transaction_type} ${formData.money_amount} IQD.`}
+                        closeDialog={closeDialog}
+                        submit={handleSubmit}
+                        closeModal={closeModalHandler}
+                        type="form"
+                    />
+                </Modal>
+            )}
         </div>
     )
 }

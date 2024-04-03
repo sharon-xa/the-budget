@@ -14,7 +14,7 @@ const DepositAndWithdraw = () => {
         Preform Transaction
       </button>
       {showTransactionModal && (
-        <Modal onClose={closeModalHandler}>
+        <Modal onClose={closeModalHandler} type="form">
           <TransactionForm closeModalHandler={closeModalHandler} />
         </Modal>
       )}

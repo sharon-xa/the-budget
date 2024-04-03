@@ -32,7 +32,7 @@ const Budget = () => {
                 {admin && (
                     <div className="flex gap-4 justify-center items-center">
                         <DepositAndWithdraw />
-                        <DeleteLastRecord disabled={logs?.length === 0} id={lastLog?.id} />
+                        <DeleteLastRecord disabled={logs?.length === 0} id={lastLog?.id} deletableLog={lastLog} />
                     </div>
                 )}
             </div>
