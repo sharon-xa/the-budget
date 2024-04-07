@@ -27,6 +27,7 @@
 
 ## Styles
 
+- You need a background color with the background image, when the page is loading the background is white which is very ugly.
 - Making sure that the designer is okay with how everything looks
 
 #### DONE
@@ -39,7 +40,6 @@
 
 ## Bugs
 
-- You shouldn't be able to access the login page while you're loged in
 - The Preform Transaction Button in the form should be disabled until the form is fulfilled
 
 #### DONE
@@ -48,3 +48,5 @@
 - Make sure that the authentication is working correctly. (DONE)
 - Trim the whitespace from the inputs when login in. (DONE)
 - The logs fetching when we change the sorting type is fucked up (Use TanStack Table). (DONE)
+- You shouldn't be able to access the login page while you're logged in. (DONE)
+
