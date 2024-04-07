@@ -1,14 +1,25 @@
 import axios from "axios";
-import { Form, json, redirect, useActionData, useNavigation } from "react-router-dom";
+import { Form, json, redirect, useActionData, useNavigate, useNavigation } from "react-router-dom";
+import { getAuthToken } from "../utils/auth";
+import { useEffect } from "react";
 
 const inputStyles = "w-[100%] bg-[transparent] border-2 border-light-blue focus:outline-none text-light-blue placeholder:text-light-blue px-8 p-[14px]";
 
 const Login = () => {
     const data = useActionData() as { errors: Error[] };
     const navigation = useNavigation();
+    const navigate = useNavigate();
+
+    // page guard
+    useEffect(() => {
+        const token = getAuthToken();
+        if (token) {
+            navigate("/");
+        }
+    });
 
     if (data?.errors) {
-        alert("nigga WTF???\n")
+        alert("WTF???\n")
     }
     const isSubmitting = navigation.state === "submitting";
 

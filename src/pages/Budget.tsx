@@ -3,11 +3,21 @@ import AmountOfMoney from "../components/budget/AmountOfMoney"
 import DeleteLastRecord from "../components/budget/DeleteLastRecord";
 import DepositAndWithdraw from "../components/budget/DepositAndWithdraw"
 import Logs from "../components/history/Logs";
-import { isAdmin } from "../utils/auth";
+import { getAuthToken, isAdmin } from "../utils/auth";
 import { useQuery } from "@tanstack/react-query";
 import { findLastLog } from "../helpers";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Budget = () => {
+    const navigate = useNavigate();
+
+    // page guard
+    useEffect(() => {
+        const token = getAuthToken();
+        if (!token)
+            navigate("/login");
+    })
     const admin: boolean = isAdmin();
 
     const { data: logs, isLoading, isError } = useQuery<LogType[] | undefined>({

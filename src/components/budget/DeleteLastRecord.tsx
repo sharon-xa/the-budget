@@ -31,7 +31,6 @@ const DeleteLastRecord = ({ id, disabled, deletableLog }: { id: number | undefin
     onError: () => alert("Something went wrong")
   });
 
-  console.log(log);
   return (
     <>
       <button disabled={isPending || disabled} type="button" className="btn bg-red font-comfortaa text-white" onClick={() => openDialog()}>
