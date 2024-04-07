@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 .background {
+    background-color: #1f1a1a;
     background-image: url("/futuristic-skyscrapers.png");
     background-repeat: no-repeat;
     background-size: cover;

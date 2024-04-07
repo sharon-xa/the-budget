@@ -27,7 +27,6 @@
 
 ## Styles
 
-- You need a background color with the background image, when the page is loading the background is white which is very ugly.
 - Making sure that the designer is okay with how everything looks
 
 #### DONE
@@ -37,6 +36,7 @@
 - Table state when there are no logs. (DONE)
 - Confirmation dialog. (DONE)
 - Table with 1 to 9 records don't look right. (DONE)
+- You need a background color with the background image, when the page is loading the background is white which is very ugly. (DONE)
 
 ## Bugs
 
