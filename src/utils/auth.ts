@@ -25,11 +25,11 @@ export function getAuthToken(): string | null {
     return token;
 }
 
-export function tokenLoader() {
+export function tokenLoader(): string | null {
     return getAuthToken();
 }
 
-export function checkAuthLoader() {
+export function checkAuthLoader(): Response | null {
     const token = getAuthToken();
 
     if (!token) return redirect("/login");
@@ -37,7 +37,7 @@ export function checkAuthLoader() {
     return null;
 }
 
-export function isAdmin() {
+export function isAdmin(): boolean {
     const userRole = localStorage.getItem("role") as "ADMIN" | "USER";
     return userRole === "ADMIN";
 }
