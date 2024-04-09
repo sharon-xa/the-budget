@@ -4,18 +4,32 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import GeneralDialog from "../UI/Dialog";
 import Modal from "../UI/Modal";
 
-const defaultFormData: MyFormData = {
+const checkValidation = (formData: TransactionFormData): { isValid: boolean, err: string } => {
+    if (formData.money_amount === "")
+        return { isValid: false, err: `You must enter a valid amount of moeny` };
+
+    else if (formData.money_amount === "0" || formData.money_amount === 0)
+        return { isValid: false, err: `You can't ${formData.transaction_type} 0 IQD` };
+
+    else if (formData.message === "")
+        return { isValid: false, err: `You must enter a message` };
+
+    else if (formData.message.length < 15)
+        return { isValid: false, err: `Message is too short, It must be more than 15 characters long` };
+
+    else
+        return { isValid: true, err: `` };
+};
+
+const defaultFormData: TransactionFormData = {
     message: "",
     money_amount: "",
     transaction_type: "deposit",
 }
 
-type Props = {
-    closeModalHandler: () => void;
-}
-
-const TransactionForm = ({ closeModalHandler }: Props) => {
-    const [formData, setFormData] = useState<MyFormData>(defaultFormData);
+const TransactionForm = ({ closeModalHandler }: { closeModalHandler: () => void }) => {
+    const [formData, setFormData] = useState<TransactionFormData>(defaultFormData);
+    const [formIsValid, setFormIsValid] = useState<boolean>(false);
     const [showDialog, setShowDialog] = useState(false);
 
     const openDialog = () => setShowDialog(true);
@@ -23,7 +37,6 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
 
     const queryClient = useQueryClient();
     const { mutate: submitTransaction, isPending } = useMutation({
-        // post the transaction to the server
         mutationFn: async () => await axios.post(`/${formData.transaction_type}`, {
             transactionAmount: +formData.money_amount,
             description: formData.message
@@ -43,22 +56,23 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
         const name = e.target.name;
         const value = e.target.value;
-        setFormData((prevFormData: MyFormData) => ({ ...prevFormData, [name]: value }));
+        setFormData((prevFormData: TransactionFormData) => ({ ...prevFormData, [name]: value }));
+        const { isValid } = checkValidation(formData);
+        setFormIsValid(isValid);
     }
 
-    // Should this function be async? why?
+
     const handleSubmit = (): boolean => {
-        if (formData.money_amount === "") alert(`Enter The Amount of Money You Want To ${formData.transaction_type}`)
-        else if (formData.money_amount === "0" || formData.money_amount === 0) alert(`You can't ${formData.transaction_type} 0 money`)
-        else if (formData.message === "") alert("You must Enter a message");
-        else if (formData.message.length < 15) alert("Message Is Too Short, It Must Be More Than 15 Characters Long");
-        else {
-            const formDataWithHistory = { ...formData };
-            setFormData(formDataWithHistory)
+        const { isValid, err } = checkValidation(formData);
+
+        if (isValid) {
+            setFormData(formData)
             submitTransaction()
-            return true
+            return isValid;
+        } else {
+            alert(err)
+            return isValid;
         }
-        return false
     }
 
     return (
@@ -108,7 +122,7 @@ const TransactionForm = ({ closeModalHandler }: Props) => {
                             e.preventDefault();
                             openDialog();
                         }}
-                        disabled={isPending}
+                        disabled={isPending || !formIsValid}
                         className={`bg-blue btn`}>
                         Preform Transaction
                     </button>

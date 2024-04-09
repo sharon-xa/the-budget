@@ -8,7 +8,7 @@ type LogType = {
     userId: number
 }
 
-type MyFormData = {
+type TransactionFormData = {
     money_amount: number | string;
     transaction_type: "deposit" | "withdraw";
     message: string;
