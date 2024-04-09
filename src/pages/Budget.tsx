@@ -5,7 +5,7 @@ import DepositAndWithdraw from "../components/budget/DepositAndWithdraw"
 import Logs from "../components/history/Logs";
 import { getAuthToken, isAdmin } from "../utils/auth";
 import { useQuery } from "@tanstack/react-query";
-import { findLastLog } from "../helpers";
+import { findLastLog, formatDate } from "../helpers";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -27,6 +27,8 @@ const Budget = () => {
             return data as LogType[];
         },
     });
+
+    logs?.forEach(log => log.date = formatDate(log.date))
 
     let lastLog: LogType | undefined;
 

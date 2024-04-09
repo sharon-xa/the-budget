@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export function addSpaceBetweenHundreds(money_amount: string | number): string {
 
     if (typeof money_amount === "number") money_amount = money_amount.toString();
@@ -25,4 +27,8 @@ export function findLastLog(logs: LogType[]): number {
         }
     })
     return logIndex;
+}
+
+export function formatDate(date: string): string {
+    return dayjs(date).format("YYYY-MM-DD hh:mm A")
 }
