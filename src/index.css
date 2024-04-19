@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@media screen and (max-width: 800px) {
+    #root {
+        display: none;
+    }
+}
+
 .background {
     background-color: #1f1a1a;
     background-image: url("/futuristic-skyscrapers.png");

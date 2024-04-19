@@ -40,7 +40,7 @@
 
 ## Bugs
 
-- The Preform Transaction Button in the form should be disabled until the form is fulfilled
+- NONE
 
 #### DONE
 
@@ -49,4 +49,5 @@
 - Trim the whitespace from the inputs when login in. (DONE)
 - The logs fetching when we change the sorting type is fucked up (Use TanStack Table). (DONE)
 - You shouldn't be able to access the login page while you're logged in. (DONE)
+- The Preform Transaction Button in the form should be disabled until the form is fulfilled. (DONE)
 

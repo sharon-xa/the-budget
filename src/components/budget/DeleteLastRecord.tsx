@@ -6,7 +6,7 @@ import Modal from "../UI/Modal";
 
 const styles = "text-center flex items-center justify-center bg-[#717A83] border border-white px-2";
 
-const DeleteLastRecord = ({ id, disabled, deletableLog }: { id: number | undefined, disabled: boolean, deletableLog: LogType | undefined }) => {
+const DeleteLastRecord = ({ disabled, deletableLog }: { disabled: boolean, deletableLog: LogType | undefined }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [log, setLog] = useState<LogType | undefined>(deletableLog);
 
@@ -21,7 +21,7 @@ const DeleteLastRecord = ({ id, disabled, deletableLog }: { id: number | undefin
 
   const { mutate: deleteLog, isPending } = useMutation({
     mutationFn: async () => {
-      return await axios.delete("/log/" + id)
+      return await axios.delete("/last-log")
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["logs"] });
