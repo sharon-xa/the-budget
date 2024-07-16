@@ -40,7 +40,8 @@
 
 ## Bugs
 
-- NONE
+- You need to give the user the freedom to deposit and withdraw the amount of money he wants to, like withdraw 41,617 IQD (we bought something with mastercard and it was in dollars)
+
 
 #### DONE
 
