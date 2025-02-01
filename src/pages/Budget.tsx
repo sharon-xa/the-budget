@@ -15,8 +15,7 @@ const Budget = () => {
     // page guard
     useEffect(() => {
         const token = getAuthToken();
-        if (!token)
-            navigate("/login");
+        if (!token) navigate("/login");
     })
     const admin: boolean = isAdmin();
 

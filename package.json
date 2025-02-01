@@ -17,6 +17,7 @@
     "@tanstack/react-query-devtools": "^5.28.14",
     "@tanstack/react-table": "^8.15.3",
     "axios": "^1.6.8",
+    "caniuse-lite": "^1.0.30001662",
     "dayjs": "^1.11.10",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

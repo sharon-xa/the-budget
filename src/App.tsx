@@ -2,8 +2,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import Budget from "./pages/Budget";
 import Login from "./pages/Login";
-import { action as loginAction } from "./pages/Login"
-import { action as logoutAction } from "./pages/Logout";
+import { loginAction } from "./actions/login"
+import { logoutAction } from "./actions/logout";
 import { checkAuthLoader, tokenLoader } from "./utils/auth";
 import ErrorPage from "./pages/Error";
 
